@@ -1,14 +1,7 @@
-package com.cbuibic.assess.model;
+package com.cbuibic.assess.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
-public class User {
+public class UserDto {
     // attributes
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -18,11 +11,10 @@ public class User {
 
     // constructor
 
-    public User() {
+    public UserDto() {
     }
 
-    public User(long id, String firstName, String lastName, String email, String password, String phone, String empId) {
-        this.id = id;
+    public UserDto(String firstName, String lastName, String email, String password, String phone, String empId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -32,13 +24,6 @@ public class User {
     }
 
     // getters and setters
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
