@@ -49,16 +49,17 @@ public class UserServiceImpl implements UserService{
 
     /**
      * delete user
-     * @param user
+     * @param id
      */
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(long id) throws Exception {
         // validating the user before delete
-        Optional<User> user1 = userRepo.findById(user.getId());
+        User user1 = userRepo.findById(id)
+                .orElseThrow();
         if(user1 == null){
-            throw new ObjectNotFoundException(user, user.getEmail());
+            throw new Exception();
         } else{
-            userRepo.delete(user);
+            userRepo.delete(user1);
         }
 
     }
@@ -80,5 +81,15 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> getAllUsers() {
         return userRepo.findAll();
+    }
+
+    /**
+     * method to update the user
+     * @param userDto
+     * @return
+     */
+    @Override
+    public User updateUser(UserDto userDto) {
+        return null;
     }
 }

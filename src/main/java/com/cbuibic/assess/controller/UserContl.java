@@ -16,15 +16,32 @@ public class UserContl {
     @Autowired
     private UserService userService;
 
+
+    /**
+     *
+     * @return
+     */
     @ModelAttribute("user")
     public UserDto userDto() {
         return new UserDto();
     }
 
+    /**
+     *
+     * @return
+     */
     @GetMapping
     public String showRegistrationForm() {
         return "registration";
     }
+
+
+    /**
+     *
+     * @param registrationDto
+     * @return
+     * @throws Exception
+     */
 
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") UserDto registrationDto) throws Exception {
@@ -34,5 +51,16 @@ public class UserContl {
         } catch (Exception e){
             return "redirect:/registration?error";
         }
+    }
+
+    /**
+     *
+     * @param id
+     * @param model
+     * @return
+     */
+    public String deleteUser(@PathVariable("id") long id, Model model) {
+        userService.deleteUser();
+        return "redirect:/index";
     }
 }

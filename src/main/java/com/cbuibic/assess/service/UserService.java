@@ -9,7 +9,8 @@ import java.util.Optional;
 
 public interface UserService {
     User creatNewUser(UserDto userDto) throws Exception;
-    void deleteUser (User user);
+    void deleteUser (long id) throws Exception;
     Optional<User> findUserById (Long id);
     List<User> getAllUsers();
+    User updateUser(UserDto userDto);
 }
