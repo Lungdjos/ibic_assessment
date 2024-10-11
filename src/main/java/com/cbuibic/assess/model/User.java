@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "[users]")
 public class User {
     // attributes
     @Id
@@ -12,6 +12,7 @@ public class User {
     private long id;
     private String firstName;
     private String lastName;
+    @Column(nullable = false, unique = true)
     private String email;
     @JsonIgnore
     private String password;

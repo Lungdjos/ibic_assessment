@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
         var user = new User();
         // validating the new user
         User user1 = userRepo.findUserByEmail(userDto.getEmail());
-        if(user1 == null) {
+        if(user1 != null) {
             throw new ObjectNotFoundException(userDto, userDto.getEmail());
         } else  {
 
