@@ -27,8 +27,12 @@ public class UserContl {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user") UserDto registrationDto) {
-        userService.creatNewUser(registrationDto);
-        return "redirect:/registration?success";
+    public String registerUserAccount(@ModelAttribute("user") UserDto registrationDto) throws Exception {
+        try {
+            userService.creatNewUser(registrationDto);
+            return "redirect:/registration?success";
+        } catch (Exception e){
+            return "redirect:/registration?error";
+        }
     }
 }

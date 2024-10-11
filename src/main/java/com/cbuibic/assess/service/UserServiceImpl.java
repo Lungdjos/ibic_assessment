@@ -24,12 +24,12 @@ public class UserServiceImpl implements UserService{
      * @return
      */
     @Override
-    public User creatNewUser(UserDto userDto) {
+    public User creatNewUser(UserDto userDto) throws Exception {
         var user = new User();
         // validating the new user
         User user1 = userRepo.findUserByEmail(userDto.getEmail());
         if(user1 != null) {
-            throw new ObjectNotFoundException(userDto, userDto.getEmail());
+            throw new Exception("This user already exists");
         } else  {
 
             // creating new user
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService{
             userRepo.save(user);
         }
 
-        return null;
+        return user;
     }
 
     /**

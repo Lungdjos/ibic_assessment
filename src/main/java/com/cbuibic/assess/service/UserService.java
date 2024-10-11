@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    User creatNewUser(UserDto userDto);
+    User creatNewUser(UserDto userDto) throws Exception;
     void deleteUser (User user);
     Optional<User> findUserById (Long id);
     List<User> getAllUsers();
