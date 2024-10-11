@@ -5,10 +5,13 @@ import com.cbuibic.assess.model.User;
 import com.cbuibic.assess.repostitory.UserRepo;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
+import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserService{
 
     @Autowired
@@ -69,5 +72,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public Optional<User> findUserById(Long id) {
         return userRepo.findById(id);
+    }
+
+    /**
+     * returning all users
+     * @return
+     */
+    @Override
+    public List<User> getAllUsers() {
+        return List.of();
     }
 }
