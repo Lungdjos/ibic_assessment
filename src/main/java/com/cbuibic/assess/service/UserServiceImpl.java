@@ -15,6 +15,12 @@ public class UserServiceImpl implements UserService{
     private UserRepo userRepo;
 
     // the logic
+
+    /**
+     * creating a new user
+     * @param userDto
+     * @return
+     */
     @Override
     public User creatNewUser(UserDto userDto) {
         var user = new User();
