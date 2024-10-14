@@ -1,13 +1,11 @@
 package com.cbuibic.assess.controller;
 
+import ch.qos.logback.core.model.Model;
 import com.cbuibic.assess.dto.UserDto;
 import com.cbuibic.assess.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/registration")
@@ -59,8 +57,9 @@ public class UserContl {
      * @param model
      * @return
      */
-    public String deleteUser(@PathVariable("id") long id, Model model) {
-        userService.deleteUser();
+    @GetMapping("/delete-user/{id}")
+    public String deleteUser(@PathVariable("id") long id, Model model) throws Exception {
+        userService.deleteUser(id);
         return "redirect:/index";
     }
 }

@@ -3,7 +3,6 @@ package com.cbuibic.assess.service;
 import com.cbuibic.assess.dto.UserDto;
 import com.cbuibic.assess.model.User;
 import com.cbuibic.assess.repostitory.UserRepo;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
